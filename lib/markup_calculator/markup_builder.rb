@@ -1,10 +1,8 @@
 class MarkupBuilder
-	attr_reader :markups, :number_of_people, :category, :percentage_policy
+	attr_reader :markups, :percentage_policy
 		
   def initialize(number_of_people, category)
-    @number_of_people = number_of_people
-    @category = Category.new category
-    @percentage_policy  = MarkupPolicy.new number_of_people, category
+    @percentage_policy  = MarkupPolicy.new number_of_people, Category.new(category)
     init_markups
   end
 	
