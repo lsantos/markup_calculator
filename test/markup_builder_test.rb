@@ -3,7 +3,7 @@ require 'markup_calculator'
 
 class MarkupBuilderTest < Test::Unit::TestCase
   def test_building_food_markups
-    markup_builder = MarkupBuilder.new 3, Category.new('food')
+    markup_builder = MarkupBuilder.new 3, 'food'
     markups = markup_builder.markups
     flat_rate_markup = markups.first
     people_markup = markups[1]
