@@ -1,33 +1,33 @@
 class MarkupPolicy
-  FLAT_RATE       = 0.05
-	PER_PERSON_RATE = 0.012
-  FOOD_RATE       = 0.13
-  ELETRONICS_RATE = 0.02
-  DRUGS_RATE      = 0.075
-  attr_reader :number_of_people, :category
+  FLAT_MARKUP_PERCENTAGE = 0.05
+	PER_PERSON_PERCENTAGE  = 0.012
+  FOOD_PERCENTAGE        = 0.13
+  ELETRONICS_PERCENTAGE  = 0.02
+  DRUGS_PERCENTAGE       = 0.075
+  attr_reader :people_count, :category
   
-  def initialize(number_of_people, category)
-    @number_of_people = number_of_people
+  def initialize(people_count, category)
+    @people_count = people_count
     @category = category
   end
   
-  def for_category
+  def percentage_for_category
     if category.food?
-      FOOD_RATE
+      FOOD_PERCENTAGE
     elsif category.electronics?
-      ELETRONICS_RATE
+      ELETRONICS_PERCENTAGE
     elsif category.drugs?
-      DRUGS_RATE
+      DRUGS_PERCENTAGE
     else
       0
     end	
   end
   
-  def for_number_of_people
-    number_of_people * PER_PERSON_RATE
+  def percentage_for_people_count
+    people_count * PER_PERSON_PERCENTAGE
   end
   
-  def flat_rate
-    FLAT_RATE
+  def flat_markup_percentage
+    FLAT_MARKUP_PERCENTAGE
   end
 end

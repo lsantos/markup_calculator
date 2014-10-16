@@ -14,15 +14,15 @@ class Markup
 
 private  
   def flat_percentage_total
-    (base_price + base_price * markup_policy.flat_rate)
+    (base_price + base_price * markup_policy.flat_markup_percentage)
   end 
 
   def people_total
-    markup_policy.for_number_of_people * flat_percentage_total
+    markup_policy.percentage_for_people_count * flat_percentage_total
   end
 
   def product_total
-    flat_percentage_total * markup_policy.for_category
+    flat_percentage_total * markup_policy.percentage_for_category
   end
   
   def validate_required_parameters(base_price, number_of_people, category)
