@@ -1,9 +1,9 @@
 class MarkupPolicy
-  FLAT_RATE       = 5
-	PER_PERSON_RATE = 1.2
-  FOOD_RATE       = 13
-  ELETRONICS_RATE = 2
-  DRUGS_RATE      = 7.5
+  FLAT_RATE       = 0.05
+	PER_PERSON_RATE = 0.012
+  FOOD_RATE       = 0.13
+  ELETRONICS_RATE = 0.02
+  DRUGS_RATE      = 0.075
   attr_reader :number_of_people, :category
   
   def initialize(number_of_people, category)
@@ -18,6 +18,8 @@ class MarkupPolicy
       ELETRONICS_RATE
     elsif category.drugs?
       DRUGS_RATE
+    else
+      0
     end	
   end
   
