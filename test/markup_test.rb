@@ -16,4 +16,8 @@ class MarkupTest < Test::Unit::TestCase
     markup = Markup.new(12456.95, 4, 'books')
     assert_equal 13707.63, markup.total
   end
+  
+  def test_markup_with_bad_input
+    assert_raises(RuntimeError) {Markup.new(nil, nil, nil)}
+  end
 end
