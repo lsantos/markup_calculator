@@ -1,10 +1,10 @@
 
 class Markup
-  attr_reader :price, :markup_policy
+  attr_reader :base_price, :markup_policy
 	
-  def initialize(price, number_of_people, category)
-    validate_required_parameters price, number_of_people, category
-    @price = price
+  def initialize(base_price, number_of_people, category)
+    validate_required_parameters base_price, number_of_people, category
+    @base_price = base_price
     @markup_policy = MarkupPolicy.new number_of_people, Category.new(category)
   end 
   
@@ -14,7 +14,7 @@ class Markup
 
 private  
   def flat_percentage_total
-    (price + price * markup_policy.flat_rate)
+    (base_price + base_price * markup_policy.flat_rate)
   end 
 
   def people_total
@@ -25,8 +25,8 @@ private
     flat_percentage_total * markup_policy.for_category
   end
   
-  def validate_required_parameters(price, number_of_people, category)
-    fail 'Missing price' if price.nil?
+  def validate_required_parameters(base_price, number_of_people, category)
+    fail 'Missing base price' if base_price.nil?
     fail 'Missing number of people' if number_of_people.nil?
     fail 'Missing category' if category.nil?
   end
